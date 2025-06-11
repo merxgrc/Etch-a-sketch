@@ -42,6 +42,7 @@ list.append("Node 2");
 list.append("Node 3");
 list.append("Node 4");
 
+
 // Display the list on the web page
 const container = document.getElementById("listDisplay");
 list.toArray().forEach((value, index, array) => {
