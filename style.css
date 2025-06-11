@@ -1,28 +1,35 @@
 #listDisplay {
-      display: flex;
-      gap: 100px;
-      margin-top: 20px;
-    }
+    position: relative;
+    width: 100%;
+    height: 500px;
+    border: 1px solid #ccc;
+}
 
-    .node {
-      width: 100px;
-      height:100px;  
-      padding: 10px 20px;
-      background-color: #4caf50;
-      color: white;
-      text-emphasis-color: white;
-      border-radius: 20px;
-      font-family: sans-serif;
-      font-weight: bold;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-    }
+.node {
+  position: absolute; /* So we can move it freely */
+  width: 100px;
+  height: 100px;
+  cursor: grab;
+  user-select: none;
 
-    .arrow {
-      width: 100px;
-      height: 20px;
-    }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 20px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
 
-    .arrowImage {
-      width: 100px;
-      height: 50px;
-    }
+.arrow {
+    width: 100px;
+    height: 20px;
+}
+
+.arrowImage {
+    width: 100px;
+    height: 50px;
+}

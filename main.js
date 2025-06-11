@@ -43,24 +43,51 @@ list.append("Node 3");
 list.append("Node 4");
 
 
+
 // Display the list on the web page
 const container = document.getElementById("listDisplay");
 list.toArray().forEach((value, index, array) => {
-  const nodeBox = document.createElement("div");
-  nodeBox.className = "node";
-  nodeBox.textContent = value;
-  container.appendChild(nodeBox);
+    const nodeBox = document.createElement("div");
+    nodeBox.className = "node";
+    nodeBox.textContent = value;
+    container.appendChild(nodeBox);
+    nodeBox.style.left = index * 120 + "px";
+    nodeBox.style.top = "50px";
 
-    if (index < array.length - 1) {
-        const nodeArrow = document.createElement("div");
-        nodeArrow.className = "arrow";
+    makeDraggable(nodeBox);
 
-        const img = document.createElement("img");
-        img.src = "./resources/arrow.png"
-        img.className = "arrowImage"
+    function makeDraggable(el) {
+        let isDragging = false;
+        let offsetX, offsetY;
 
-        nodeArrow.appendChild(img);
-        container.appendChild(nodeArrow);
+        el.addEventListener("mousedown", (e) => {
+            isDragging = true;
+            offsetX = e.offsetX;
+            offsetY = e.offsetY;
+            el.style.cursor = "grabbing";
+        });
+
+        document.addEventListener("mousemove", (e) => {
+            if (isDragging) {
+                el.style.left = e.pageX - offsetX + "px";
+                el.style.top = e.pageY - offsetY + "px";
+            }
+        });
+
+        document.addEventListener("mouseup", () => {
+            isDragging = false;
+            el.style.cursor = "grab";
+        });
     }
-  
+    // if (index < array.length - 1) {
+    //     const nodeArrow = document.createElement("div");
+    //     nodeArrow.className = "arrow";
+
+    //     const img = document.createElement("img");
+    //     img.src = "./resources/arrow.png"
+    //     img.className = "arrowImage"
+
+    //     nodeArrow.appendChild(img);
+    //     container.appendChild(nodeArrow);
+    // }
 });
